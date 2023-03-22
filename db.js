@@ -1,10 +1,12 @@
+require('dotenv').config()
+console.log(process.env.mongoURI)
 const mongoose = require("mongoose");
 
-const mongoURI = "mongodb://localhost:27017/placement-cell";
 
 const connectToMongo = async () => {
+
   try {
-    await mongoose.connect(mongoURI);
+    await mongoose.connect(process.env.mongoURI);
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error(err);

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
@@ -7,7 +8,7 @@ var jwt = require("jsonwebtoken");
 const authMiddleware = require("../middleware/fetchuser");
 const cors = require("cors");
 
-const JWT_SECRET = "Ghost";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Create user using POST "/api/auth/createuser" Doesn't require auth
 router.post(
@@ -24,7 +25,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
+    console.log(JWT_SECRET)
     // find if user already exists
     try {
       let user = await User.findOne({ email: req.body.email });
