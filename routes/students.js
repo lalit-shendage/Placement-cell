@@ -4,7 +4,7 @@ const fetchuser = require("../middleware/fetchuser");
 const User = require("../models/User");
 const bodyParser = require("body-parser");
 const { body, validationResult } = require("express-validator");
-const Student = require("../models/Student");
+const Student = require("../models/student");
 
 router.get("/fetchstudents", fetchuser, async (req, res) => {
   const students = await Student.find({ user: req.user.id });
