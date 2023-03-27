@@ -1,0 +1,80 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>studentlist</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <%- include('navbar') %>
+    <div class="container w-50 p-3">
+      <h3 for="student my-3"><%= student.name %></h3>
+      <div class="form-group my-3">
+        <form action="/company/schedule-interview" method="POST">
+          <div class="form-control d-flex justify-content-between">
+            <label for="name">Company Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="w-50 p-3"
+              required
+            />
+          </div>
+
+          <div class="form-control d-flex justify-content-between">
+            <label for="date">Date:</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              required
+              class="w-50 p-3"
+            />
+          </div>
+          <div class="form-control d-flex justify-content-between">
+            <label for="result" class="form-label">Placement Status</label>
+            <select
+              class="form-select w-50 p-3"
+              aria-label="Default select example"
+              name="result"
+              id="result"
+            >
+              <option value="pass">pass</option>
+              <option value="fail">fail</option>
+              <option value="did not attempt">did not attempt</option>
+            </select>
+          </div>
+          <div class="form-control d-flex justify-content-between ">
+            <label for="id">Student id</label>
+            <input
+              type="text"
+              id="id"
+              name="id"
+              value="<%= student._id %>"
+              required
+              class="w-50 p-3"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary text-light">
+            Add Interview
+          </button>
+        </form>
+
+        
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/2ff3082c-8b17-401b-88ce-35b98e9dadeb/resourceGroups/placement-cell_group/providers/Microsoft.Web/sites/placement-cell-lalit",
-    "appService.deploySubpath": "."
-}

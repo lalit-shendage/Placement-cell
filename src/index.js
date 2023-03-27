@@ -1,31 +1,43 @@
-require('dotenv').config()
-const connectToMongo = require("../db");
-const cors = require("cors");
+const express = require('express');
+const dotenv = require('dotenv');
+const db = require('../db');
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('../config/passport');
 
-connectToMongo();
-
-const express = require("express");
 const app = express();
-const port =process.env.PORT || 5000;
 
-// app.use(cors());
-
+// set ejs as view engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
 app.use(
-  cors({
-    origin: "http://localhost:3000",
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 100 },
   })
 );
-app.use(express.json());
 
-// available routes
-app.use("/api/auth", require("../routes/auth"));
-app.use("/api/students", require("../routes/students"));
-app.use("/api/interview", require("../routes/interviews"));
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// for authentication
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+// express router
+app.use('/', require('../routes'));
+
+const port = 8000;
+
+// listen on port
+app.listen(port, function (error) {
+  if (error) {
+    console.log(`Error in connecting to server: ${error}`);
+    return;
+  }
+  console.log(`Server running on port: ${port}`);
 });

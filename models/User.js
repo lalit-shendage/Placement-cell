@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const bcrypt = require('bcrypt');
+
 
 const UserSchema = new Schema({
   name: {
@@ -11,19 +13,20 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
-  password: {
+  passwordHash: {
     type: String,
     required: true,
-  },
-  role: {
-    type: String,
-    enum: ["admin", "User"],
-    default: "User",
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+  }
+
 });
+
+UserSchema.virtual('password').set(function (value) {
+  this.passwordHash = bcrypt.hashSync(value, 12);
+});
+
+UserSchema.methods.isPasswordCorrect = function (password) {
+  return bcrypt.compareSync(password, this.passwordHash);
+};
+
 
 module.exports = mongoose.model("User", UserSchema);

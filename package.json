@@ -1,43 +1,30 @@
 {
-  "name": "pc-backend",
+  "name": "placement-cell",
   "version": "1.0.0",
-  "description": "",
-  "main": "yes",
+  "description": "placement cell app for coding ninjas skill test",
+  "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
+    "start": "nodemon index.js -e js,ejs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "author": "lalit",
   "license": "ISC",
   "dependencies": {
-    "async-hooks": "^1.3.1",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.2",
-    "connect-mongo": "^5.0.0",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
-    "dotenv-webpack": "^8.0.1",
     "ejs": "^3.1.9",
-    "env": "^0.0.2",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
-    "express-validator": "^6.14.2",
-    "html-webpack-plugin": "^5.5.0",
-    "jsonwebtoken": "^9.0.0",
+    "fast-csv": "^4.3.6",
+    "fs": "^0.0.1-security",
     "mongoose": "^7.0.3",
-    "morgan": "^1.10.0",
-    "node-polyfill-webpack-plugin": "^2.0.1",
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
-    "passport-jwt": "^4.0.1",
-    "passport-local": "^1.0.0",
-    "webpack": "^5.76.3",
-    "webpack-cli": "^5.0.1"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.20.2",
-    "babel-loader": "^9.1.2"
+    "passport-local": "^1.0.0"
   }
 }

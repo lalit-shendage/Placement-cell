@@ -14,6 +14,25 @@ const studentSchema = new mongoose.Schema({
   dsaScore: { type: Number, required: true },
   webDScore: { type: Number, required: true },
   reactScore: { type: Number, required: true },
+  interviews: [
+    {
+      company: {
+        type: String,
+      },
+      date: {
+        type: String,
+      },
+      result: {
+        type: String,
+        enum: [
+          'pass',
+          'fail',
+          'did not attempt',
+        ],
+        
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("Student", studentSchema);
