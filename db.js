@@ -1,7 +1,7 @@
 require('dotenv').config()
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.mongoURI,);
+mongoose.connect("mongodb+srv://Lalit:123@cluster0.dwnwv8t.mongodb.net/placement-cell-2");
 
 const db = mongoose.connection;
 
